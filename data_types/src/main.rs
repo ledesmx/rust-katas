@@ -15,6 +15,11 @@ fn main() {
 
     // 6. Suma de elementos
     println!("{}", array_sum([4, 2, 5, 2, 4]));
+
+    // 7. Buscar el valor máximo
+    println!("{}", array_max([4.3, 8.0, 1.9, 3.0, 0.3]));
+    println!("{}", array_max([-4.0, -8.0, 1.0, -3.0, 0.0]));
+    println!("{}", array_max([44.3, 44.4, 44.1, -33.3, 10.0]));
 }
 
 // 1. Intercambio sin variables temporales
@@ -101,4 +106,35 @@ fn which_plane(vector: (i32, i32)) -> String {
 
 fn array_sum(arr: [i32; 5]) -> i32 {
     arr[0] + arr[1] + arr[2] + arr[3] + arr[4]
+}
+
+// 7. Buscar el valor máximo
+
+// Dado un array [i32; 5], encuentra el valor más grande.
+
+// 👉 Restricciones:
+
+// No uses métodos avanzados
+
+// No uses vectores
+
+// Pregunta clave:
+// ¿Cómo mantienes el “máximo actual” mientras recorres el array?
+fn array_max(arr: [f64; 5]) -> f64 {
+    let mut max = arr[0];
+
+    if arr[1] > max {
+        max = arr[1];
+    }
+    if arr[2] > max {
+        max = arr[2];
+    }
+    if arr[3] > max {
+        max = arr[3];
+    }
+    if arr[4] > max {
+        max = arr[4];
+    }
+
+    max
 }
