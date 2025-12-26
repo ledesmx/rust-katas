@@ -6,6 +6,10 @@ fn main() {
     // 2. Parámetros obligatorios
     imprimir(3, 't');
     // imprimir('n', 4); incorrect order
+
+    // 3. Función silenciosa
+    let any = nothing(32);
+    println!("{:?}", any);
 }
 // 1. Orden de ejecución
 
@@ -47,3 +51,23 @@ fn aux2() {
 fn imprimir(val1: i32, val2: char) {
     println!("Valor_1: {} - Valor_2: {}", val1, val2);
 }
+
+// 3. Función silenciosa
+
+// Escribe una función que:
+
+// reciba un número
+
+// no imprima nada
+
+// no devuelva nada
+
+// Luego:
+
+// asigna su resultado a una variable
+
+// imprime esa variable
+
+// Pregunta clave:
+// ¿Qué tipo devuelve realmente una función “vacía”?
+fn nothing(_n: i32) {}
