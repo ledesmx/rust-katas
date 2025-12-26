@@ -28,6 +28,11 @@ fn main() {
     let temps = [(3.3, 2.4), (4.4, 5.3), (5.5, 2.3)];
     let (max, min) = temmperatures(temps);
     println!("Average min {} --- Average max {}", max, min);
+
+    // 12. Coordenadas
+    let vecs = [(3, 8), (8, 2), (-3, 33), (9, 0)];
+    let res = vector_sum(vecs);
+    print!("Final vec {}  {}", res.0, res.1);
 }
 
 // 1. Intercambio sin variables temporales
@@ -185,4 +190,26 @@ fn temmperatures(temps: [(f64, f64); 3]) -> (f64, f64) {
     let average_min = average_min / 3.0;
 
     (average_max, average_min)
+}
+
+// 12. Coordenadas
+
+// Representa un camino como un array de puntos:
+
+// [(i32, i32); 4]
+
+// Calcula la distancia Manhattan total:
+
+// |x1 - x0| + |y1 - y0| + ...
+
+// Pregunta clave:
+// ¿Cómo combinas acceso por índice con destructuring?
+
+fn vector_sum(vecs: [(i32, i32); 4]) -> (i32, i32) {
+    let mut final_vec: (i32, i32) = (0, 0);
+
+    final_vec.0 = vecs[0].0 + vecs[1].0 + vecs[2].0 + vecs[3].0;
+    final_vec.1 = vecs[0].1 + vecs[1].1 + vecs[2].1 + vecs[3].1;
+
+    final_vec
 }
