@@ -29,6 +29,9 @@ fn main() {
         y
     };
     println!("{x}");
+
+    let no = no_parameters();
+    println!("{no}");
 }
 // 1. Orden de ejecución
 
@@ -90,3 +93,28 @@ fn imprimir(val1: i32, val2: char) {
 // Pregunta clave:
 // ¿Qué tipo devuelve realmente una función “vacía”?
 fn nothing(_n: i32) {}
+
+// 5. Bloque como expresión
+
+// Crea una función que:
+
+// no reciba parámetros
+
+// dentro tenga un bloque {} que:
+
+// declare una variable
+
+// haga una operación
+
+// devuelva un valor
+
+// Asigna ese valor a una variable en main.
+// Pregunta clave:
+// ¿Qué línea del bloque es la que realmente “devuelve” el valor?
+fn no_parameters() -> i32 {
+    {
+        let x = 3;
+        let y = 5;
+        x + y
+    }
+}
