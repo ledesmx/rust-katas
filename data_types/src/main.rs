@@ -23,6 +23,11 @@ fn main() {
 
     // 9. Comparación de arrays
     println!("{}", array_equal([3, 4, 4], [3, 3, 4]));
+
+    // 11. Array de tuplas
+    let temps = [(3.3, 2.4), (4.4, 5.3), (5.5, 2.3)];
+    let (max, min) = temmperatures(temps);
+    println!("Average min {} --- Average max {}", max, min);
 }
 
 // 1. Intercambio sin variables temporales
@@ -155,4 +160,29 @@ fn array_max(arr: [f64; 5]) -> f64 {
 
 fn array_equal(a: [i32; 3], b: [i32; 3]) -> bool {
     a == b
+}
+
+// 11. Array de tuplas
+
+// Representa temperaturas diarias como un array de tuplas:
+
+// [(i32, i32); 3] // (mínima, máxima)
+
+// Calcula:
+
+// la temperatura máxima global
+
+// la mínima global
+
+// Pregunta clave:
+// ¿Cómo accedes a elementos anidados?
+
+fn temmperatures(temps: [(f64, f64); 3]) -> (f64, f64) {
+    let average_max = temps[0].0 + temps[1].0 + temps[2].0;
+    let average_max = average_max / 3.0;
+
+    let average_min = temps[0].1 + temps[1].1 + temps[2].1;
+    let average_min = average_min / 3.0;
+
+    (average_max, average_min)
 }
