@@ -12,6 +12,9 @@ fn main() {
     println!("{}", which_plane((3, 5)));
     println!("{}", which_plane((-4, -5)));
     println!("{}", which_plane((0, -5)));
+
+    // 6. Suma de elementos
+    println!("{}", array_sum([4, 2, 5, 2, 4]));
 }
 
 // 1. Intercambio sin variables temporales
@@ -84,4 +87,18 @@ fn which_plane(vector: (i32, i32)) -> String {
         }
     }
     result
+}
+
+// 6. Suma de elementos
+
+// Dado un array [i32; 5], calcula la suma total de sus elementos usando índices, no for.
+
+// 👉 Pista:
+// Accede manualmente a cada posición.
+
+// Pregunta clave:
+// ¿Qué pasa si el tamaño del array cambia?
+
+fn array_sum(arr: [i32; 5]) -> i32 {
+    arr[0] + arr[1] + arr[2] + arr[3] + arr[4]
 }
