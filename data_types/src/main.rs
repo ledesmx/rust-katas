@@ -20,6 +20,9 @@ fn main() {
     println!("{}", array_max([4.3, 8.0, 1.9, 3.0, 0.3]));
     println!("{}", array_max([-4.0, -8.0, 1.0, -3.0, 0.0]));
     println!("{}", array_max([44.3, 44.4, 44.1, -33.3, 10.0]));
+
+    // 9. Comparación de arrays
+    println!("{}", array_equal([3, 4, 4], [3, 3, 4]));
 }
 
 // 1. Intercambio sin variables temporales
@@ -137,4 +140,19 @@ fn array_max(arr: [f64; 5]) -> f64 {
     }
 
     max
+}
+
+// 9. Comparación de arrays
+
+// Dados dos arrays [i32; 3], determina si son iguales elemento por elemento, sin usar ==.
+
+// Devuelve un bool.
+
+// Pregunta clave:
+// ¿Por qué Rust permite comparar arrays directamente pero tú no debes hacerlo aquí?
+
+// 🧠 Ejercicios Mixtos (Tuplas + Arrays)
+
+fn array_equal(a: [i32; 3], b: [i32; 3]) -> bool {
+    a == b
 }
