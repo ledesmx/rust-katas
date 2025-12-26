@@ -30,8 +30,14 @@ fn main() {
     };
     println!("{x}");
 
+    // 5. Bloque como expresión
     let no = no_parameters();
     println!("{no}");
+
+    // 8. Retorno anticipado
+    println!("Paso 33 -> {}", zero_one(33));
+    println!("Paso -5 -> {}", zero_one(-5));
+    println!("Paso  0 -> {}", zero_one(0));
 }
 // 1. Orden de ejecución
 
@@ -117,4 +123,25 @@ fn no_parameters() -> i32 {
         let y = 5;
         x + y
     }
+}
+
+// 8. Retorno anticipado
+
+// Crea una función que:
+
+// reciba un i32
+
+// si el número es negativo, devuelva 0
+
+// si no, devuelva el número + 1
+
+// 👉 Usa return solo en uno de los caminos.
+
+// Pregunta clave:
+// ¿Qué pasa con el flujo cuando se ejecuta return?
+fn zero_one(x: i32) -> i32 {
+    if x < 0 {
+        return 0;
+    }
+    x + 1
 }
