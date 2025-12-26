@@ -10,6 +10,25 @@ fn main() {
     // 3. Función silenciosa
     let any = nothing(32);
     println!("{:?}", any);
+
+    // 🧩 Statements vs Expressions
+    // 4. ¿Por qué esto no funciona?
+
+    // Intenta (mentalmente o en código) algo como:
+
+    // let x = (let y = 10);
+
+    // Luego:
+
+    // reescribe el código para que sí compile, usando un bloque {}.
+
+    // Pregunta clave:
+    // ¿Por qué un bloque puede devolver un valor pero un let no?
+    let x = {
+        let y = 11;
+        y
+    };
+    println!("{x}");
 }
 // 1. Orden de ejecución
 
