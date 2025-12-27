@@ -43,6 +43,10 @@ fn main() {
     println!("{}", ajustar_cal(promedio([30.0, 42.0, 45.9, 87.0, 98.3])));
     println!("{}", ajustar_cal(promedio([99.0, 95.0, 99.9, 100.0, 98.3])));
     println!("{}", ajustar_cal(promedio([0.0, 2.0, 2.9, 0.0, 0.3])));
+
+    // 🧩 PROBLEMA 2 — Encadenamiento (qué es y para qué sirve)
+    let final_score = multiplicador(recompensa(bono_inicial(777)));
+    println!("{final_score}");
 }
 // 1. Orden de ejecución
 
@@ -259,3 +263,14 @@ fn ajustar_cal(cal: f64) -> f64 {
 //         bono_inicial(puntos_base)
 //     )
 // );
+
+fn bono_inicial(puntos: i32) -> i32 {
+    puntos + 15
+}
+fn recompensa(puntos: i32) -> i32 {
+    puntos + 33
+}
+fn multiplicador(puntos: i32) -> i32 {
+    let puntosf = puntos as f64 * 1.5;
+    puntosf as i32
+}
