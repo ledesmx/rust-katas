@@ -3,9 +3,15 @@ fn main() {
     println!("{}", mayor_de_edad(33));
     println!("{}", mayor_de_edad(13));
 
+    // 2. Clasificador de número (else if)
     println!("{}", ifnum(4));
     println!("{}", ifnum(-5));
     println!("{}", ifnum(0));
+
+    // 🧩 BLOQUE 2: loop y control explícito
+    println!("{}", doble_incremento(10));
+    println!("{}", doble_incremento(8));
+    println!("{}", doble_incremento(-8));
 }
 // 🧭 Ejercicios — Control Flow (if, loops)
 // 🧩 BLOQUE 1: if como toma de decisiones (problemas reales)
@@ -66,4 +72,40 @@ fn ifnum(n: i32) -> String {
     } else {
         String::from("Es cero")
     }
+}
+
+// 🧩 BLOQUE 2: loop y control explícito
+// 4. Contador con condición de salida
+
+// 📌 Problema
+// Simula un contador que empieza en 0 y se incrementa hasta llegar a 10.
+
+// Cuando llegue a 10:
+
+// detén el loop
+
+// devuelve el valor final multiplicado por 2
+
+// 📌 Requisitos
+
+// Usa loop
+
+// Usa break devolviendo un valor
+
+// El resultado debe asignarse a una variable
+
+// 🤔 Piensa
+// ¿Por qué loop puede devolver un valor?
+
+fn doble_incremento(limit: i32) -> i32 {
+    let mut counter = 0;
+    let mut sum = 0;
+    let result = loop {
+        if counter >= limit {
+            break sum;
+        }
+        sum = (sum + counter) * 2;
+        counter += 1;
+    };
+    result
 }
