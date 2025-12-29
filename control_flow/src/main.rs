@@ -12,6 +12,11 @@ fn main() {
     println!("{}", doble_incremento(10));
     println!("{}", doble_incremento(8));
     println!("{}", doble_incremento(-8));
+
+    // 5. Búsqueda simple (loop + if)
+    println!("{}", has_number(8, [4, 8, 5, 8, 0]));
+    println!("{}", has_number(24, [4, 8, 5, 8, 0]));
+    println!("{}", has_number(0, [4, 8, 5, 8, 0]));
 }
 // 🧭 Ejercicios — Control Flow (if, loops)
 // 🧩 BLOQUE 1: if como toma de decisiones (problemas reales)
@@ -108,4 +113,35 @@ fn doble_incremento(limit: i32) -> i32 {
         counter += 1;
     };
     result
+}
+
+// 5. Búsqueda simple (loop + if)
+
+// 📌 Problema
+// Tienes un número secreto.
+// El programa prueba números empezando desde 1 hasta encontrarlo.
+
+// 📌 Requisitos
+
+// Usa loop
+
+// Usa if para verificar
+
+// Cuando lo encuentres, imprime cuántos intentos tomó
+
+// 🤔 Piensa
+// ¿En qué se parece esto al guessing game?
+fn has_number(n: i32, array: [i32; 5]) -> bool {
+    let mut i = 0;
+    loop {
+        if i >= array.len() {
+            break;
+        }
+        if n == array[i] {
+            return true;
+        } else {
+            i += 1;
+        }
+    }
+    false
 }
