@@ -1,3 +1,5 @@
+use rand;
+
 fn main() {
     // 1. Sistema de acceso (if básico)
     println!("{}", mayor_de_edad(33));
@@ -17,6 +19,8 @@ fn main() {
     println!("{}", has_number(8, [4, 8, 5, 8, 0]));
     println!("{}", has_number(24, [4, 8, 5, 8, 0]));
     println!("{}", has_number(0, [4, 8, 5, 8, 0]));
+
+    adivinar_numeros([4, 5, 1]);
 }
 // 🧭 Ejercicios — Control Flow (if, loops)
 // 🧩 BLOQUE 1: if como toma de decisiones (problemas reales)
@@ -144,4 +148,56 @@ fn has_number(n: i32, array: [i32; 5]) -> bool {
         }
     }
     false
+}
+
+// 🧩 Ejercicio — Simulación de control de intentos
+// 🧠 Problema
+
+// Estás programando un sistema que simula intentos de acceso por día.
+
+// Reglas:
+
+// El sistema revisa varios días
+
+// Cada día tiene hasta 3 intentos de acceso
+
+// Si en un día ocurre un acceso exitoso, se dejan de evaluar los intentos de ese día
+
+// El sistema continúa con el siguiente día
+
+// 📌 Comportamiento esperado
+
+// El loop externo representa los días
+
+// El loop interno representa los intentos
+
+// Cuando ocurre un acceso exitoso:
+
+// se usa break sin etiqueta
+
+// solo se rompe el loop interno
+
+// El programa NO debe terminar completamente, solo pasar al siguiente día
+fn adivinar_numeros(numeros: [i32; 3]) {
+    let mut dia = 0;
+    loop {
+        if dia < 3 {
+            let mut intentos = 0;
+            loop {
+                if intentos >= 3 {
+                    println!("Dia {} No adivino {}", dia + 1, numeros[dia]);
+                    break;
+                }
+                let n = rand::random_range(0..6); // del 0 al 5
+                if numeros[dia] == n {
+                    println!("Dia {} Adivino {} en intento {}", dia + 1, n, intentos + 1);
+                    break;
+                }
+                intentos += 1;
+            }
+        } else {
+            break;
+        }
+        dia += 1;
+    }
 }
