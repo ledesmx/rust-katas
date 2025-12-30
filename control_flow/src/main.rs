@@ -25,6 +25,11 @@ fn main() {
 
     // 6. Cuenta regresiva
     cuenta_regresiva(7);
+
+    // 8. Suma de valores (for)
+    println!("Suma array {}", suma_array([6, 6, 6, 6]));
+    println!("Suma array {}", suma_array([1, 2, 3, 4]));
+    println!("Suma array {}", suma_array([1, 20, -16, -5]));
 }
 // 🧭 Ejercicios — Control Flow (if, loops)
 // 🧩 BLOQUE 1: if como toma de decisiones (problemas reales)
@@ -228,4 +233,28 @@ fn cuenta_regresiva(mut i: i32) {
         i -= 1;
     }
     println!("DESPEGUE");
+}
+
+// 🧩 BLOQUE 4: Arrays + loops (problemas prácticos)
+// 8. Suma de valores (for)
+
+// 📌 Problema
+// Dado un array de números:
+
+// calcula la suma total
+
+// 📌 Requisitos
+
+// Usa for
+
+// No uses índices manuales
+
+// 🤔 Piensa
+// ¿Por qué este método es más seguro que usar while con índices?
+fn suma_array(valores: [i32; 4]) -> i32 {
+    let mut sum = 0;
+    for v in valores {
+        sum += v;
+    }
+    sum
 }
