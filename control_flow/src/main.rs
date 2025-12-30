@@ -20,7 +20,11 @@ fn main() {
     println!("{}", has_number(24, [4, 8, 5, 8, 0]));
     println!("{}", has_number(0, [4, 8, 5, 8, 0]));
 
+    // 🧩 Ejercicio — Simulación de control de intentos
     adivinar_numeros([4, 5, 1]);
+
+    // 6. Cuenta regresiva
+    cuenta_regresiva(7);
 }
 // 🧭 Ejercicios — Control Flow (if, loops)
 // 🧩 BLOQUE 1: if como toma de decisiones (problemas reales)
@@ -200,4 +204,28 @@ fn adivinar_numeros(numeros: [i32; 3]) {
         }
         dia += 1;
     }
+}
+
+// 🧩 BLOQUE 3: while como condición natural
+// 6. Cuenta regresiva
+
+// 📌 Problema
+// Imprime una cuenta regresiva desde un número dado hasta 1, y luego imprime "DESPEGUE".
+
+// 📌 Requisitos
+
+// Usa while
+
+// No uses loop
+
+// 🤔 Piensa
+// ¿Por qué while hace este código más claro que loop?
+
+fn cuenta_regresiva(mut i: i32) {
+    println!("Comenzando...");
+    while i > 0 {
+        println!("{i}");
+        i -= 1;
+    }
+    println!("DESPEGUE");
 }
