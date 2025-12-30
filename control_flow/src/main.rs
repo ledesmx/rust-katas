@@ -30,6 +30,9 @@ fn main() {
     println!("Suma array {}", suma_array([6, 6, 6, 6]));
     println!("Suma array {}", suma_array([1, 2, 3, 4]));
     println!("Suma array {}", suma_array([1, 20, -16, -5]));
+
+    // 9. Buscar el mayor valor
+    println!("Mayor {}", mayor([1, 2, 3, 4]));
 }
 // 🧭 Ejercicios — Control Flow (if, loops)
 // 🧩 BLOQUE 1: if como toma de decisiones (problemas reales)
@@ -257,4 +260,31 @@ fn suma_array(valores: [i32; 4]) -> i32 {
         sum += v;
     }
     sum
+}
+
+// 9. Buscar el mayor valor
+
+// 📌 Problema
+// Dado un array de enteros:
+
+// encuentra el valor más grande
+
+// 📌 Requisitos
+
+// Usa for
+
+// Usa if
+
+// No uses métodos avanzados
+
+// 🤔 Piensa
+// ¿Qué variable debe “recordar” el estado del problema?
+fn mayor(valores: [i32; 4]) -> i32 {
+    let mut mayor = valores[0];
+    for v in valores {
+        if v > mayor {
+            mayor = v;
+        }
+    }
+    mayor
 }
