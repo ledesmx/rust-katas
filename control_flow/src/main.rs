@@ -1,4 +1,5 @@
 use rand;
+use std::ops::Range;
 
 fn main() {
     // 1. Sistema de acceso (if básico)
@@ -33,6 +34,11 @@ fn main() {
 
     // 9. Buscar el mayor valor
     println!("Mayor {}", mayor([1, 2, 3, 4]));
+
+    // 🧠 3. Cuenta regresiva
+    conteo_regresivo(0..5);
+    conteo_regresivo(-3..3);
+    conteo_regresivo(6..9);
 }
 // 🧭 Ejercicios — Control Flow (if, loops)
 // 🧩 BLOQUE 1: if como toma de decisiones (problemas reales)
@@ -287,4 +293,37 @@ fn mayor(valores: [i32; 4]) -> i32 {
         }
     }
     mayor
+}
+
+// 🧠 3. Cuenta regresiva
+
+// 📌 Problema
+// Simula una cuenta regresiva para un lanzamiento:
+
+// Salida esperada:
+
+// 3
+// 2
+// 1
+// DESPEGUE
+
+// 📌 Requisitos
+
+// Usa for con un range
+
+// Usa .rev()
+
+// No uses while
+
+// 🤔 Piensa
+// ¿Por qué .rev() no modifica el range original?
+
+fn conteo_regresivo(conteo: Range<i32>) {
+    for n in conteo.rev() {
+        if n == 0 {
+            println!("DESPEGUE");
+            break;
+        }
+        println!("{n}");
+    }
 }
