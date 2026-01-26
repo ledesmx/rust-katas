@@ -11,6 +11,9 @@ fn main() {
     let mut t2 = String::new();
     normalize(&mut t2);
     println!("{}", t2);
+
+    let max = max_length(&s1, &s2);
+    println!("El mayor es {}", max);
 }
 // 🟢 Ejercicio 1 — Contador de vocales (borrow inmutable)
 
@@ -96,6 +99,14 @@ fn normalize(text: &mut String) {
 // No retornes referencias (solo el número)
 
 // 👉 Aquí practicas múltiples referencias inmutables al mismo tiempo.
+
+fn max_length(s1: &String, s2: &String) -> usize {
+    if s1.len() > s2.len() {
+        return s1.len();
+    } else {
+        return s2.len();
+    }
+}
 
 // 🟡 Ejercicio 4 — Editor controlado (scopes + mutable borrow)
 
