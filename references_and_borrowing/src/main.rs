@@ -4,6 +4,13 @@ fn main() {
     println!("hola -> {}", count_vowels(&s1));
     println!("si tu me diste un vide de suerte -> {}", count_vowels(&s2));
     println!("2x -> {}", count_vowels(&String::from("2x")));
+
+    let mut t1 = String::from("Hola Mi Amigo");
+    normalize(&mut t1);
+    println!("{}", t1);
+    let mut t2 = String::new();
+    normalize(&mut t2);
+    println!("{}", t2);
 }
 // 🟢 Ejercicio 1 — Contador de vocales (borrow inmutable)
 
@@ -52,36 +59,11 @@ fn count_vowels(text: &String) -> usize {
 // Firma esperada
 // fn normalize(text: &mut String)
 fn normalize(text: &mut String) {
-    for (i, c) in text.chars().enumerate() {
-        match c {
-            'A' => {text.insert(i, 'a');}
-            'B' => {text.insert(i, 'b');}
-            'C' => {text.insert(i, 'c');}
-            // 'D' => {}
-            // 'E' => {}
-            // 'F' => {}
-            // 'G' => {}
-            // 'H' => {}
-            // 'I' => {}
-            // 'J' => {}
-            // 'K' => {}
-            // 'L' => {}
-            // 'M' => {}
-            // 'N' => {}
-            // 'O' => {}
-            // 'P' => {}
-            // 'Q' => {}
-            // 'R' => {}
-            // 'S' => {}
-            // 'T' => {}
-            // 'U' => {}
-            // 'V' => {}
-            // 'W' => {}
-            // 'X' => {}
-            // 'Y' => {}
-            // 'Z' => {}
-            _ => {}
-        }
+    if text.is_empty() {
+        text.push_str("!");
+    } else {
+        let new_text = text.to_ascii_lowercase();
+        *text = new_text;
     }
 }
 
