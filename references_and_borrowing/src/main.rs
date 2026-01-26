@@ -141,6 +141,18 @@ fn max_length(s1: &String, s2: &String) -> usize {
 
 // 👉 Pista: piensa en cuándo deja de usarse la referencia.
 
+fn _editor_controlado() {
+    let mut s = String::from("hola");
+
+    // let len_ref = &s;
+    s.push_str(" mundo");
+
+    // push_str recibe una mutable reference, y rust no permite tener una referencia mutable coexistiendo simultaneamente con otras referencias
+    let len_ref = &s;
+
+    println!("{len_ref}");
+}
+
 // 🟡 Ejercicio 5 — Reemplazo seguro
 
 // Objetivo: Pensar como el borrow checker.
