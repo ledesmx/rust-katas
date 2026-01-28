@@ -290,3 +290,8 @@ fn _solucionar_error() {
 // 🎮 Hacer mini-proyectos (ej: editor de texto seguro)
 
 // Tú mandas, Rustacean 🦀🔥
+
+fn _make_message() -> String {
+    let s = String::from("hola");
+    s // La referencia deja de ser valida porque el valor es dropped, mejor no devolver la refercia y pasar ownership
+}
