@@ -14,6 +14,14 @@ fn main() {
 
     let max = max_length(&s1, &s2);
     println!("El mayor es {}", max);
+
+    let mut banana = String::from("Banana");
+    let mut alejandria = String::from("Alejandria");
+    let mut aaa = String::from("Aaa");
+    replace_a(&mut banana);
+    replace_a(&mut alejandria);
+    replace_a(&mut aaa);
+    println!("{banana} {alejandria} {aaa}");
 }
 // 🟢 Ejercicio 1 — Contador de vocales (borrow inmutable)
 
@@ -183,6 +191,24 @@ fn _editor_controlado() {
 // No tengas referencias activas al modificar
 
 // 👉 Este ejercicio es 100% mental, no sintáctico.
+
+fn replace_a(text: &mut String) {
+    if text.len() < 5 {
+        return;
+    }
+    let mut replace_at = vec![false; text.len()];
+    for (i, c) in text.char_indices() {
+        if c == 'a' || c == 'A' {
+            replace_at[i] = true;
+        }
+    }
+    for (i, val) in replace_at.iter().enumerate() {
+        if *val {
+            text.remove(i);
+            text.insert(i, '@');
+        }
+    }
+}
 
 // 🔴 Ejercicio 6 — Arregla el error (diagnóstico de borrowing)
 
