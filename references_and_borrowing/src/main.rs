@@ -238,6 +238,16 @@ fn replace_a(text: &mut String) {
 
 // 👉 No borres referencias “a lo bruto”. Arréglalo bien.
 
+fn _solucionar_error() {
+    let s = String::from("hello");
+
+    let r1 = &s;
+    // let r2 = &mut s; esto no funciona porque no puede haber otras referencion coexistiendo con otra referencia mutable
+    let r2 = &s; // Ni es necesario que sea mutable asi que solo sera una referencia read-only
+
+    println!("{r1} {r2}");
+}
+
 // 🔴 Ejercicio 7 — Anti-dangling (pensamiento de ownership)
 
 // Objetivo: Detectar referencias inválidas.
