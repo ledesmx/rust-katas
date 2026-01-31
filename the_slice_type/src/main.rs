@@ -101,3 +101,43 @@ fn prefix(s: &str) -> &str {
     }
     s
 }
+
+// 🟡 Ejercicio 4 — Slice vs mutación (error intencional)
+
+// Objetivo: Entender por qué slices previenen bugs.
+
+// Código base
+// fn main() {
+//     let mut s = String::from("hola mundo");
+
+//     let w = first_word(&s);
+
+//     s.clear();
+
+//     println!("{w}");
+// }
+
+// Tu tarea
+
+// Explica por qué no compila
+
+// Reescribe el código para que:
+
+// Compile
+
+// Siga usando slices
+
+// No use clone
+
+// 👉 No lo “arregles” quitando el slice: razona el borrowing.
+fn _fix_error() {
+    let mut s = String::from("hola mundo");
+
+    let w = first_word(&s);
+
+    // s.clear(); Para que esto funcione no puede haber una referencia mutable coexistiendo con el slice
+
+    println!("{w}");
+
+    s.clear();
+}
