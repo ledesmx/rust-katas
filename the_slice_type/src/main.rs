@@ -9,6 +9,9 @@ fn main() {
     println!("last {}", last_word(&text1));
     println!("last {}", last_word(&text2));
     println!("last {}", last_word(&text3));
+
+    println!("prefix {}", prefix("LOG: The message"));
+    println!("prefix {}", prefix("Just the message"));
 }
 // 🟢 Ejercicio 1 — Primera palabra (slice básico)
 
@@ -65,6 +68,36 @@ fn last_word(s: &str) -> &str {
             return &s[i+1..];
         }
         // println!("{} {}", i, c);
+    }
+    s
+}
+
+// 🟡 Ejercicio 3 — Prefijo válido
+
+// Objetivo: Usar slices como vistas parciales.
+
+// Enunciado
+
+// Escribe una función que devuelva:
+
+// El prefijo antes del primer ':'
+
+// O todo el texto si no hay ':'
+
+// Firma
+// fn prefix(s: &str) -> &str
+
+// Ejemplo
+// assert_eq!(prefix("user:password"), "user");
+// assert_eq!(prefix("admin"), "admin");
+
+
+// 👉 Muy similar a first_word, pero con otro separador.
+fn prefix(s: &str) -> &str {
+    for (i, c) in s.char_indices() {
+        if c == ':' {
+            return &s[..i];
+        }
     }
     s
 }
