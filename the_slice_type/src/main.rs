@@ -223,3 +223,37 @@ fn print_window(nums: &[i32]) {
         prev_n = n;
     }
 }
+
+// 🔴 Ejercicio 8 — Detectar diseño incorrecto
+
+// Objetivo: Pensar como diseñador de APIs.
+
+// Código sospechoso
+// fn word_range(s: &str) -> (usize, usize)
+
+// Tu tarea
+
+// Explica por qué esta API es peligrosa
+
+// Propón una versión segura usando slices
+
+// Explica qué bug evita Rust con esto
+
+// 👉 No escribas código primero: razona el problema.
+
+// 🧠 Reto mental (muy importante)
+
+// Responde con tus palabras:
+
+// ¿Por qué un &str no puede existir sin el texto original?
+
+// ¿Por qué un slice es mejor que devolver índices?
+
+// ¿Qué tipo de bug real evita Rust aquí?
+
+// Si puedes explicarlo sin mencionar “porque Rust lo prohíbe”, ya lo entendiste 😉
+
+// Esta API es mejor porque con el slice Rust se encarga de mantener ligado el slice a la referencia original, si
+// esta cambia y tratamos de usar el slice Rust no compilara, Rust nos cuida de errores en tiempo de compilacion.
+// De lo contrario debemos mantener nosotros is indices actualizados lo cual es mas propenso a errores
+fn _word_range(s: &str) -> &str { s }
