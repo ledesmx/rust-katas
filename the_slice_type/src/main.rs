@@ -12,6 +12,10 @@ fn main() {
 
     println!("prefix {}", prefix("LOG: The message"));
     println!("prefix {}", prefix("Just the message"));
+
+    let arr = [5, 6, 9, 6, 6, 2, 1, 9, 0, 5, 6];
+    println!("Sum of slice {}", sum_slice(&arr[3..9]));
+    println!("Sum of slice {}", sum_slice(&arr[..]));
 }
 // 🟢 Ejercicio 1 — Primera palabra (slice básico)
 
@@ -140,4 +144,38 @@ fn _fix_error() {
     println!("{w}");
 
     s.clear();
+}
+
+// 🟡 Ejercicio 5 — Contador usando slice de array
+
+// Objetivo: Aprender que slices no son solo para strings.
+
+// Enunciado
+
+// Dado un arreglo de números, devuelve la suma de una sección.
+
+// Firma
+// fn sum_slice(slice: &[i32]) -> i32
+
+// Ejemplo
+// fn main() {
+//     let nums = [1, 2, 3, 4, 5];
+//     let part = &nums[1..4];
+
+//     assert_eq!(sum_slice(part), 2 + 3 + 4);
+// }
+
+// Reglas
+
+// No copies el array
+
+// Usa for
+
+// 👉 Aquí el concepto es idéntico a &str, solo cambia el tipo.
+fn sum_slice(slice: &[i32]) -> i32 {
+    let mut sum = 0;
+    for n in slice.iter() {
+        sum = sum + n;
+    }
+    sum
 }
