@@ -16,6 +16,9 @@ fn main() {
     let arr = [5, 6, 9, 6, 6, 2, 1, 9, 0, 5, 6];
     println!("Sum of slice {}", sum_slice(&arr[3..9]));
     println!("Sum of slice {}", sum_slice(&arr[..]));
+
+    print_window(&arr[5..]);
+    print_window(&arr);
 }
 // 🟢 Ejercicio 1 — Primera palabra (slice básico)
 
@@ -178,4 +181,45 @@ fn sum_slice(slice: &[i32]) -> i32 {
         sum = sum + n;
     }
     sum
+}
+
+// 🟡 Ejercicio 6 — Ventana deslizante (lógica + slices)
+
+// Objetivo: Pensar slices dinámicos.
+
+// Enunciado
+
+// Dado un array y un tamaño k, imprime todas las ventanas contiguas de tamaño k.
+
+// Ejemplo
+// let a = [1, 2, 3, 4];
+
+// print_windows(&a, 2);
+
+
+// Salida esperada:
+
+// [1, 2]
+// [2, 3]
+// [3, 4]
+
+// Firma sugerida
+// fn print_windows(a: &[i32], k: usize)
+
+
+// 👉 No devuelvas nada, solo imprime.
+// 👉 Piensa en índices + slices (&a[i..i+k]).
+fn print_window(nums: &[i32]) {
+    if nums.len() < 1 {
+        return;
+    }
+    let mut prev_n = &nums[0];
+    for (i, n) in nums.iter().enumerate() {
+        if i == 0 {
+            println!("-- Starting --");
+            continue;
+        }
+        println!("Window [{}, {}]", prev_n, n);
+        prev_n = n;
+    }
 }
