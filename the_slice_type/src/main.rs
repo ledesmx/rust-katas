@@ -19,6 +19,17 @@ fn main() {
 
     print_window(&arr[5..]);
     print_window(&arr);
+
+    let data1 = [1, 2, 3, 4, 5, 6];
+    let w1 = first_window_above(&data1, 3, 10);
+    println!("{:?} WS:{} L:{}, ANSWER:{:?}", data1, 3, 10, w1);
+    let data1 = [1, 2, 3, 4, 5, 6];
+    let w1 = first_window_above(&data1, 2, 13);
+    println!("{:?} WS:{} L:{}, ANSWER:{:?}", data1, 2, 13, w1);
+    let data1 = [1, 2, 3, 4, 5, 6];
+    let w1 = first_window_above(&data1, 4, 18);
+    println!("{:?} WS:{} L:{}, ANSWER:{:?}", data1, 4, 18, w1);
+
 }
 // 🟢 Ejercicio 1 — Primera palabra (slice básico)
 
@@ -257,3 +268,61 @@ fn print_window(nums: &[i32]) {
 // esta cambia y tratamos de usar el slice Rust no compilara, Rust nos cuida de errores en tiempo de compilacion.
 // De lo contrario debemos mantener nosotros is indices actualizados lo cual es mas propenso a errores
 fn _word_range(s: &str) -> &str { s }
+
+// 🧩 Reto 2 — Filtro de ventana segura (slices + lógica)
+// Problema
+
+// Tienes sensores que producen lecturas numéricas.
+// Quieres analizar ventanas consecutivas del sensor sin copiar datos.
+
+// Objetivo
+
+// Escribe una función que:
+
+// Recorra un array usando ventanas deslizantes
+
+// Devuelva la primera ventana cuya suma sea mayor a un umbral
+
+// Firma obligatoria
+// fn first_window_above(nums: &[i32], window_size: usize, limit: i32) -> &[i32]
+
+// Reglas
+
+// Si no existe ventana válida, devuelve un slice vacío &[]
+
+// No copies el array
+
+// No uses Vec
+
+// Ejemplo
+// let data = [1, 2, 3, 4, 5, 6];
+
+// let w = first_window_above(&data, 3, 10);
+// assert_eq!(w, &[4, 5, 6]);
+
+// Lo difícil aquí
+
+// Manejar rangos correctamente (i..i+window_size)
+
+// Evitar out-of-bounds
+
+// Entender que un slice puede ser resultado de lógica compleja
+
+// 👉 Este patrón se usa muchísimo en sistemas y data processing.
+
+fn first_window_above(nums: &[i32], window_size: usize, limit: i32) -> &[i32] {
+    let mut first_index = 0;
+    let mut last_index = window_size;
+    
+    while last_index <= nums.len() as usize {
+        let answer = &nums[first_index..last_index];
+        if sum_slice(answer) >= limit {
+            return answer;
+        } else {
+            last_index = last_index + 1;
+            first_index = first_index + 1;
+        }
+    }
+
+    &[]
+}
