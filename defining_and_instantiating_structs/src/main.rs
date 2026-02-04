@@ -9,6 +9,15 @@ fn main() {
 
     let u1 = change_email(u1, String::from("zynzyn@gmail.com"));
     println!("{} {}", u1.username, u1.email);
+
+    let u2 = User{
+        username: String::from("juan_alameda"),
+        email: String::from("alameda@gmail.com"),
+        active: false,
+        sign_in_count: 0,
+    };
+    println!("{}", username_prefix(&u1));
+    println!("{}", username_prefix(&u2));
 }
 
 // Ejercicio 1 - Constructor seguro de usuario
@@ -24,6 +33,7 @@ struct User {
     active: bool,
     sign_in_count: u64,
 }
+
 fn create_user(username: String, email: String) -> User {
     User {
         username,
@@ -48,4 +58,19 @@ fn change_email(user: User, new_email: String) -> User {
         email: new_email,
         ..user
     }
+}
+
+// Ejercicio 4 - Vista segura del username (slices + borrowing)
+// Objetivo: Conecctar structs con slices
+// Escribe una funcion que devuelva el primer segmento del username antes del _
+fn username_prefix(user: &User) -> &str {
+    let mut last_index = user.username.len();
+    for (i, c) in user.username.char_indices() {
+        if c == '_' {
+            last_index = i;
+            break;
+        }
+    }
+
+    &user.username[..last_index]
 }
