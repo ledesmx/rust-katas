@@ -74,3 +74,9 @@ fn username_prefix(user: &User) -> &str {
 
     &user.username[..last_index]
 }
+
+// Ejercicio 5 - Tuple structs para tipos seguros
+// Objetivo: Entender tigos distintos aueque tengan los mismos datos
+// Define dos tuples structs: Color(i32. i32. i32), Point(i32, i32, i32)
+// Escribe dos funciones: is_brack(color: Color) -> bool, is_origin(point: Point) -> bool
+// No mezclar tipos, usa destructuring. Rust te protege de errores semanticos.
