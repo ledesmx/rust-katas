@@ -18,6 +18,13 @@ fn main() {
     };
     println!("{}", username_prefix(&u1));
     println!("{}", username_prefix(&u2));
+
+    let color = Color(0, 0, 0);
+    let point = Point(1, 6, 0);
+    // println!("{}", is_black(point)); Aunque practicamente son el mismo tuple, son diferentes tipos y rust te protege de estos errores
+    println!("{}", is_black(color));
+    println!("{}", is_origin(point));
+
 }
 
 // Ejercicio 1 - Constructor seguro de usuario
@@ -78,5 +85,23 @@ fn username_prefix(user: &User) -> &str {
 // Ejercicio 5 - Tuple structs para tipos seguros
 // Objetivo: Entender tigos distintos aueque tengan los mismos datos
 // Define dos tuples structs: Color(i32. i32. i32), Point(i32, i32, i32)
-// Escribe dos funciones: is_brack(color: Color) -> bool, is_origin(point: Point) -> bool
+// Escribe dos funciones: is_black(color: Color) -> bool, is_origin(point: Point) -> bool
 // No mezclar tipos, usa destructuring. Rust te protege de errores semanticos.
+struct Color(i32, i32, i32);
+struct Point(i32, i32, i32);
+fn is_black(color: Color) -> bool {
+    let Color(r, g, b) = color;
+    if r == 0 && g == 0 && b == 0 {
+        true
+    } else {
+        false
+    }
+}
+fn is_origin(point: Point) -> bool {
+    let Point(x, y, z) = point;
+    if x == 0 && y == 0 && z == 0 {
+        true
+    } else {
+        false
+    }
+}
