@@ -22,8 +22,11 @@ fn main() {
     let color = Color(0, 0, 0);
     let point = Point(1, 6, 0);
     // println!("{}", is_black(point)); Aunque practicamente son el mismo tuple, son diferentes tipos y rust te protege de estos errores
-    println!("{}", is_black(color));
-    println!("{}", is_origin(point));
+    println!("Is black {}", is_black(color));
+    println!("Is origin{}", is_origin(point));
+
+    println!("{} {} {} is valid {}", u1.username, u1.email, u1.active, is_valid_user(&u1));
+    println!("{} {} {} is valid {}", u2.username, u2.email, u2.active, is_valid_user(&u2));
 
 }
 
@@ -104,4 +107,28 @@ fn is_origin(point: Point) -> bool {
     } else {
         false
     }
+}
+
+// Ejercicio 6 - Validacion de usuario
+// Objetivo: Crear funciones que leen sin tomar ownership
+// Escribe una funcion que valide un usuario. Username no debe estar vacio, email debe contener @, active debe ser true
+// Usa metodos de String que devuelvan booleanos o slices. Recibe un referencia del struct User
+fn is_valid_user(user: &User) -> bool {
+//     struct User {
+//     username: String,
+//     email: String,
+//     active: bool,
+//     sign_in_count: u64,
+// }
+    if user.username.is_empty() {
+        return false;
+    }
+    if !user.email.contains("@") {
+        return false;
+    }
+    if !user.active {
+        return false
+    }
+
+    true
 }
