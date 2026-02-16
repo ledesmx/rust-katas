@@ -132,3 +132,17 @@ fn is_valid_user(user: &User) -> bool {
 
     true
 }
+
+// Ejercicio 7 - Error de design intencional (razonamiento ownership)
+// Considera este struct
+// Explica por que Rust no lo permite
+// Explica que bug real evitaria
+// Justifica por que String es mejor aqui en este capitulo
+// struct User1 {
+//     username: &str,
+//     email: &str,
+// }
+// 1. Rust no permite usar referencias como tipo de datos en los structs. Solo hacer referencias a Struct completos
+// 2. Al evitar referencias, garantizas que la instancia tiene el ownership de los datos, sino fuera asi y si
+// el dato original de la referencia es limpiado tendriamos un referencia a un dato inexistente.
+// 3. En este caso String es mejor porque permite que cada instncia del struct tenga el ownership de sus datos
