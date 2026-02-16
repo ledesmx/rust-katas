@@ -10,7 +10,7 @@ fn main() {
     let u1 = change_email(u1, String::from("zynzyn@gmail.com"));
     println!("{} {}", u1.username, u1.email);
 
-    let u2 = User{
+    let mut u2 = User{
         username: String::from("juan_alameda"),
         email: String::from("alameda@gmail.com"),
         active: false,
@@ -27,6 +27,18 @@ fn main() {
 
     println!("{} {} {} is valid {}", u1.username, u1.email, u1.active, is_valid_user(&u1));
     println!("{} {} {} is valid {}", u2.username, u2.email, u2.active, is_valid_user(&u2));
+
+
+    let mut u3 = User{
+        username: String::from("admin_juan"),
+        email: String::from("superadmin@gmail.com"),
+        active: true,
+        sign_in_count: 3,
+    };
+    process_user(&mut u2);
+    process_user(&mut u3);
+    println!("User:{} Email:{} Active:{} Count:{}", u3.username, u3.email, u3.active, u3.sign_in_count);
+    println!("User:{} Email:{} Active:{} Count:{}", u2.username, u2.email, u2.active, u2.sign_in_count);
 
 }
 
@@ -146,3 +158,20 @@ fn is_valid_user(user: &User) -> bool {
 // 2. Al evitar referencias, garantizas que la instancia tiene el ownership de los datos, sino fuera asi y si
 // el dato original de la referencia es limpiado tendriamos un referencia a un dato inexistente.
 // 3. En este caso String es mejor porque permite que cada instncia del struct tenga el ownership de sus datos
+
+
+// Ejercicio 8 - Editor de usuarios
+// Objetivo: Controlar lectura + escritura sin romper borrowing
+// Escribe una funcion que:
+// 1. Lea el prefijo del username
+// 2. So le prefiji es "admin", desactive el usuario
+// 3. Si no, incremente sign_in_count
+// Firma: fn process_user(user: &mut User)
+fn process_user(user: &mut User) {
+    let prefix_user = &user.username[..5];
+    if prefix_user == "admin" {
+        user.active = false;
+    } else {
+        user.sign_in_count = user.sign_in_count + 1;
+    }
+}
