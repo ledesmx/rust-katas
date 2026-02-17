@@ -1,12 +1,3 @@
-// Proyecto: Sistema de presupuestos personales
-// Crear un pequeno programa que modele un gasto mensual y permita:
-// - Calcular el total gastado
-// - Detectar si estas en deficit
-// - Imprimir informacion en modo debug
-// - Usar borrowing correctamente
-// - Usar #[derive(Debug)]
-// - Usar dbg! estrategicamente
-// Sin metodos, solo funciones que reciben &Struct
 fn main() {
     let width = 50;
     let height = 60;
@@ -32,6 +23,18 @@ fn main() {
     println!("rect2 is {rect2:?}");
     println!("rect2 is {rect2:#?}");
     dbg!(&rect2);
+
+    let b = Budget{
+        income: 800,
+        rent: 500,
+        food: 263,
+        transport: 26,
+        entertainment: 66,
+    };
+    println!("Budget {b:#?}");
+    let spent = total_spent(dbg!(&b));
+    let deficit = is_deficit(&b);
+    println!("Total spent: {} - Is in deficit? {}", spent, deficit);
 }
 // It's not clear aniwhere in our program that the parameters are related
 fn area(width: u32, height: u32) -> u32 {
@@ -53,4 +56,28 @@ struct Rectangle {
 }
 fn area_struct(rectangle: &Rectangle) -> u32 {
     rectangle.width * rectangle.height
+}
+
+// Proyecto: Sistema de presupuestos personales
+// Crear un pequeno programa que modele un gasto mensual y permita:
+// - Calcular el total gastado
+// - Detectar si estas en deficit
+// - Imprimir informacion en modo debug
+// - Usar borrowing correctamente
+// - Usar #[derive(Debug)]
+// - Usar dbg! estrategicamente
+// Sin metodos, solo funciones que reciben &Struct
+#[derive(Debug)]
+struct Budget {
+    income: u32,
+    rent: u32,
+    food: u32,
+    transport: u32,
+    entertainment: u32,
+}
+fn total_spent(budget: &Budget) -> u32 {
+    budget.rent + budget.food + budget.transport + budget.entertainment
+}
+fn is_deficit(budget: &Budget) -> bool {
+    total_spent(&budget) > budget.income
 }
