@@ -1,5 +1,12 @@
 fn main() {
-    println!("Hello, world!");
+    let mut jesse = BankAccount{
+        owner: String::from("Jesse Adams"),
+        balance: 460,
+    };
+    jesse.deposit(60);
+    println!("Jesse account: {jesse:#?}");
+    println!("Retirar {}", dbg!(jesse.withdraw(200)));
+    println!("Retirar {}", dbg!(jesse.withdraw(600)));
 }
 
 // Ejercicio 1 - Cuenta bancaria con estado
@@ -8,6 +15,23 @@ fn main() {
 // - deposit(&mut self, amount: i32)
 // - withdraw(&mut self, amount: i32) -> bool
 // - is_overdrawn(&self) -> bool
-// Withdraw devuelve false si no hay suficiente dinero
 // No debe permitir balance negativo
 // No usar clone. Practicar &mut self, mutabilidad interna, control de flujo, retornar bool 
+#[derive(Debug)]
+struct BankAccount {
+    owner: String,
+    balance: i32,
+}
+impl BankAccount {
+    fn deposit(&mut self, amount: i32) {
+        self.balance = self.balance + amount;
+    }
+    fn withdraw(&mut self, amount: i32) -> bool {
+        if amount > self.balance {
+            return false;
+        } else {
+            self.balance  = self.balance - amount;
+        }
+        true
+    }
+}
