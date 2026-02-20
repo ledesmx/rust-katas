@@ -25,6 +25,18 @@ fn main() {
     };
     println!("{box1:#?} contains {box2:#?} {}", box1.can_hold(&box2));
     println!("{box1:#?} contains {box3:#?} {}", box1.can_hold(&box3));
+
+    let mut p1 = Player {
+        name: String::from("Vegetta777"),
+        score: 0,
+    };
+    p1.add_points(77);
+    println!("{} {} {}", p1.name(), p1.score(), p1.is_winner());
+    p1.add_points(100);
+    println!("{} {} {}", p1.name(), p1.score(), p1.is_winner());
+    p1.reset();
+    println!("{} {} {}", p1.name(), p1.score(), p1.is_winner());
+
 }
 
 // Ejercicio 1 - Cuenta bancaria con estado
@@ -78,6 +90,36 @@ impl Box3D {
         } else {
             true
         }
+    }
+}
+
+// Ejercicio 3 - Sistema de puntuacion
+#[derive(Debug)]
+struct Player {
+    name: String,
+    score: i32,
+}
+// Implementa metodos:
+// - add_points para agregar puntos a score
+// - reset para volver score a 0
+// - is_winner devuleve true si score > 100
+// - score y name para devolver el valor del campo score y name
+// Aqui practicas getter manual, nombre del metono igual que el campo, &self y &mut self
+impl Player {
+    fn add_points(&mut self, points: i32) {
+        self.score = self.score + points;
+    }
+    fn reset(&mut self) {
+        self.score = 0;
+    }
+    fn is_winner(&self) -> bool {
+        self.score > 100
+    }
+    fn score(&self) -> i32 {
+        self.score
+    }
+    fn name(&self) -> &String {
+        &self.name
     }
 }
 
