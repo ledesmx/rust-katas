@@ -37,6 +37,14 @@ fn main() {
     p1.reset();
     println!("{} {} {}", p1.name(), p1.score(), p1.is_winner());
 
+
+    let temp = Temperature::new(14.0);
+    let temp2 = Temperature::from_fahrenheit(0.0);
+    println!("celsius {} fahrenheit {}", temp.celsius, temp.to_fahrenheit());
+    println!("celsius {} fahrenheit {}", temp2.celsius, temp2.to_fahrenheit());
+
+
+
 }
 
 // Ejercicio 1 - Cuenta bancaria con estado
@@ -120,6 +128,32 @@ impl Player {
     }
     fn name(&self) -> &String {
         &self.name
+    }
+}
+
+// Ejercicio 4 - Constructor personalizado
+struct Temperature {
+    celsius: f64,
+}
+// Cear funciones asociadas
+// - new(celsius: f64) -> Self
+// - from_fahrenheit(f: f64) -> Self
+// Y crea el metodo
+// - to_fahrenheit(&self) -> f64
+// Aqui practicas Self, funciones asociadas, uso de :: sintaxis
+impl Temperature {
+    fn new(celsius: f64) -> Self {
+        Self {
+            celsius: celsius,
+        }
+    }
+    fn from_fahrenheit(fahrenheit: f64) -> Self {
+        Self {
+            celsius: (fahrenheit - 32.0) * 0.5556,
+        }
+    }
+    fn to_fahrenheit(&self) -> f64 {
+        (self.celsius * 1.8) + 32.0
     }
 }
 
