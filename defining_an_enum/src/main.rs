@@ -9,6 +9,12 @@ fn main() {
     let mut order2 = Order::new(44, "black eyed peas");
     order2.cancel();
     println!("{}", order2.status_text());
+
+    let mut user = User::new("Dan Dan");
+    println!("{}", user.contact_info());
+    user.set_email("daniel@gmail.com");
+    println!("Tiene email {}", user.has_email());
+    println!("{}", user.contact_info());
 }
 
 // Ejercicio 1 - Sistema de estados de pedido
@@ -72,5 +78,48 @@ impl Order {
         } else {
             format!("{}'s order with id {}: CANCELLED", self.customer, self.id)
         }
+    }
+}
+
+// Ejercicio 2 - Sistema de Usuario con Email opcional
+// Modela un usuario que puede o no tener email
+// User: username: String, emali: option, active: bool
+// Metodos:
+// - new: crean nuevo usuario a partir del username
+// - set_email: agrega email al usuario
+// - has_email: true si tiene un email
+// - contact_info: regresa la info del usuario en un String
+// Si tiene email contact_info debe incluirlo, sino "No email registrado"
+// No usar valor interno sin verificar antes
+// Practicar Option, is_some(), unwrap(), revisar documentacion de Option
+
+struct User {
+    username: String,
+    email: Option<String>,
+    active: bool,
+}
+impl User {
+    fn new(username: &str) -> Self {
+        Self {
+            username: String::from(username),
+            email: None,
+            active: true,
+        }
+    }
+    fn set_email(&mut self, email: &str) {
+        self.email = Some(String::from(email));
+    }
+    fn has_email(&self) -> bool {
+        self.email.is_some()
+    }
+    fn contact_info(&self) -> String {
+        let active = if self.active {
+            "Activo"
+        } else {
+            "Inactivo"
+        };
+        let email = self.email.clone().unwrap_or(String::from("No Email registrado"));
+
+        format!("{} {} {}", self.username, email, active)
     }
 }
