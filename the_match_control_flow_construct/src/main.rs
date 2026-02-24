@@ -18,6 +18,10 @@ fn main() {
     ];
     process_commands(&actions);
 
+    println!("None++ = {}", plus_one(None).unwrap_or_default());
+    println!("6 * 2 = {}", safe_double(Some(6)).unwrap_or_default());
+    println!("8 + 1 = {}", add_options(Some(8), Some(1)).unwrap_or_default());
+    println!("None + 5 = {}", add_options(None, Some(5)).unwrap_or_default());
 }
 
 // Ejercicio 1 - Producto con estado de inventario
@@ -111,8 +115,28 @@ fn process_commands(cmds: &[Command]) {
     }
 }
 
-// Ejercicio 3 - Sistema seguro con option
+// Ejercicio 3 - Operaciones con option
 // Implementa 
 // - plus_one(x: Option<i32>) -> Option<i32>
 // - safe_double(x: Option<i32>) -> Option<i32>
 // - add_options(x: Option<i32>, y: Option<i32>) -> Option<i32>
+fn plus_one(x: Option<i32>) -> Option<i32> {
+    match x {
+        Some(value) => Some(value + 1),
+        None => None,
+    }
+}
+fn safe_double(x: Option<i32>) -> Option<i32> {
+    match x {
+        Some(value) => Some(value * 2),
+        None => None,
+    }
+}
+fn add_options(x: Option<i32>, y: Option<i32>) -> Option<i32> {
+    match (x, y) {
+        (Some(v1), Some(v2)) => Some(v1 + v2),
+        (Some(v), None) => Some(v),
+        (None, Some(v)) => Some(v),
+        (None, None) => None,
+    }
+}
