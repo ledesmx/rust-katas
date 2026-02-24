@@ -140,3 +140,27 @@ fn add_options(x: Option<i32>, y: Option<i32>) -> Option<i32> {
         (None, None) => None,
     }
 }
+
+// Ejercicio 4 - Sistema de combate 2D8, Jugador vs GM
+// Se lanzan 2 dados de 8 caras, y se suma el resultado, el valor determina una accion
+// Crea la funcion handle_player_roll(total: u8)
+// - 2 -> Fallo critico. Te tropiezas con tu propia espada,
+// - 16 -> Golpe legendario. El mundo tiembla ante ti.
+// - 8 -> Golpe perfectamente calculado.
+// - 12 -> Combo especias desbloquado.
+// - d < 5 -> Ataque debil. apenas rozas al enemigo.
+// - d > 13 -> Ataque devastador cargado de energia.
+// - 9 < d > 11 -> Ataque solido y consistente.
+// - Catch-all -> Ataque normal.
+// Crea la funcion handle_enemy_roll(total: u8)
+// - 2 -> El enemigo falla miserablemente
+// - 15 -> El enemigo invoca una sombra oscura
+// - 7 -> El enemigo te estudia y espera.
+// - d > 12 -> El enemigo ejecuta un ataque brutal
+// - Catch-all -> Nada
+// Crea la funcion resolve_turn(plajer_roll: u8, enemy_roll: u8)
+// - Llama primero al jugador, luego al enemigo
+// - Imprime "--- Player Turn ---" "--- Enemy Turn ---"
+// Usa match en todas las funciones
+// Practicas match con valores literales, con rangos, orden de evaluacion,
+// catch-all, binding del valor capturado, etc
