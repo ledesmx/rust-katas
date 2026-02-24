@@ -109,4 +109,10 @@ fn process_commands(cmds: &[Command]) {
         }
         execute_command(cmd);
     }
-} 
+}
+
+// Ejercicio 3 - Sistema seguro con option
+// Implementa 
+// - plus_one(x: Option<i32>) -> Option<i32>
+// - safe_double(x: Option<i32>) -> Option<i32>
+// - add_options(x: Option<i32>, y: Option<i32>) -> Option<i32>
