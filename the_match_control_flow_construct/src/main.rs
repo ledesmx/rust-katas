@@ -9,6 +9,15 @@ fn main() {
     println!("Esta aun disponible? {}", laptop.is_available());
     println!("Transaccion: {}", laptop.buy(3));
     println!("{}", laptop.stock_text());
+
+    let actions = [
+        Command::Move(6),
+        Command::Attack(String::from("Diablo")),
+        Command::Quit,
+        Command::Heal(2),
+    ];
+    process_commands(&actions);
+
 }
 
 // Ejercicio 1 - Producto con estado de inventario
@@ -65,3 +74,39 @@ impl Product {
         format!("{}: {} --- {}", self.name, self.price, stock)
     }
 }
+
+// Ejercicio 2 - Sistema de comandos de juego
+// Crea un enum Command: Move: i32, Attack: String, Heal: u32, Quit
+// Crea una funcion execute_command(c: Command)
+// - Move debe imprimir "moving n spaces"
+// - Attack debe imprimir "attackin target"
+// - Heal debe imprimir "healing amount HP"
+// - Quit debe imprimir "exiting game"
+// Crea una funcion process_commands: &[Command]
+// Recorre el slice y ejecuta cada comando, si encuentra quit deja de procesar los siguientes
+enum Command {
+    Move(i32),
+    Attack(String),
+    Heal(u32),
+    Quit,
+}
+fn execute_command(cmd: &Command) {
+    match cmd {
+        Command::Move(n_spaces) => println!("Moving {} spaces", n_spaces),
+        Command::Attack(target) => println!("Attacking {}", target),
+        Command::Heal(hp) => println!("Healing {} hp", hp),
+        Command::Quit => println!("Exiting game"),
+    }
+}
+fn process_commands(cmds: &[Command]) {
+    for cmd in cmds {
+        match cmd {
+            Command::Quit => {
+                execute_command(cmd);
+                break;
+            }
+            _ => {}
+        }
+        execute_command(cmd);
+    }
+} 
