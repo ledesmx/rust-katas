@@ -28,6 +28,13 @@ fn main() {
     resolve_turn(9, 16);
     resolve_turn(12, 7);
     resolve_turn(10, 2);
+
+    let mut cs = ConnectionState::Disconnected;
+    println!("{}", cs.status_message());
+    cs = ConnectionState::Connecting;
+    println!("{}", cs.status_message());
+    cs = ConnectionState::Connected(String::from("192:0:0:2"));
+    println!("{}", cs.status_message());
 }
 
 // Ejercicio 1 - Producto con estado de inventario
@@ -196,4 +203,25 @@ fn resolve_turn(player_roll: u8, enemy_roll: u8) {
     handle_player_roll(player_roll);
     println!("--- Enemy turn  ---");
     handle_enemy_roll(enemy_roll);
+}
+
+// Ejercicio 6 - Estado de conexion
+// Crea un enum ConnectionState: Disconnected, Connecting, Connected(String)
+// Crea metodo: status_message(&self) -> String
+// - Disconnected debe regresar "No connection"
+// - Connecting debe regresar "Connecting..."
+// - Connected(String) debe regresar "Connected to ip: {String}"
+enum ConnectionState {
+    Disconnected,
+    Connecting,
+    Connected(String),
+}
+impl ConnectionState {
+    fn status_message(&self) -> String {
+        match self {
+            Self::Disconnected => String::from("No connection"),
+            Self::Connecting => String::from("Connecting..."),
+            Self::Connected(ip) => format!("Connected to ip: {}", ip),
+        }
+    }
 }
