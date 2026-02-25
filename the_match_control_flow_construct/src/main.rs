@@ -35,6 +35,10 @@ fn main() {
     println!("{}", cs.status_message());
     cs = ConnectionState::Connected(String::from("192:0:0:2"));
     println!("{}", cs.status_message());
+
+    process_number(Some(6));
+    process_number(Some(5));
+    process_number(None);
 }
 
 // Ejercicio 1 - Producto con estado de inventario
@@ -223,5 +227,19 @@ impl ConnectionState {
             Self::Connecting => String::from("Connecting..."),
             Self::Connected(ip) => format!("Connected to ip: {}", ip),
         }
+    }
+}
+
+// Ejercicio 7 - Match anidado
+// Crea funcion process_number(x: Option<i32>)
+// Si None imprimir "No number"
+// Si Some y es par imprimor "Even number"
+// Si Some y es impar imprimor "Odd number"
+// Practicar match con logica interna if
+fn process_number(x: Option<i32>) {
+    match x {
+        None => println!("No number"),
+        Some(n) if n % 2 == 0 => println!("Even number"),
+        Some(_) => println!("Odd number"),
     }
 }
