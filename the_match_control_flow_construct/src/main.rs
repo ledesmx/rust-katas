@@ -22,6 +22,12 @@ fn main() {
     println!("6 * 2 = {}", safe_double(Some(6)).unwrap_or_default());
     println!("8 + 1 = {}", add_options(Some(8), Some(1)).unwrap_or_default());
     println!("None + 5 = {}", add_options(None, Some(5)).unwrap_or_default());
+
+    resolve_turn(6, 6);
+    resolve_turn(2, 8);
+    resolve_turn(9, 16);
+    resolve_turn(12, 7);
+    resolve_turn(10, 2);
 }
 
 // Ejercicio 1 - Producto con estado de inventario
@@ -164,3 +170,30 @@ fn add_options(x: Option<i32>, y: Option<i32>) -> Option<i32> {
 // Usa match en todas las funciones
 // Practicas match con valores literales, con rangos, orden de evaluacion,
 // catch-all, binding del valor capturado, etc
+fn handle_player_roll(total: u8) {
+    match total {
+        2 => println!("Fallo critico. Te tropiezas con tu propia espada."),
+        16 => println!("Golpe legendario. El mundo tiembla ante ti."),
+        8 => println!("Golpe perfectamente calculado."),
+        12 => println!("Combo especial desbloqueado."),
+        10 => println!("Ataque solido y consistente."),
+        2..5 => println!("Ataque debil. Apenas rozas al enemigo."),
+        14..=16 => println!("Ataque devastador cargado de energia."),
+        _ => println!("Ataque normal."),
+    }
+}
+fn handle_enemy_roll(total: u8) {
+    match total {
+        2 => println!("El enemigo falla miserablemente."),
+        15 => println!("El enemigo invoca una sombra oscura."),
+        7 => println!("El enemigo te estudia y espera."),
+        13..=16 => println!("El enemigo ejecuta un ataque brutal."),
+        _ => (),
+    }
+}
+fn resolve_turn(player_roll: u8, enemy_roll: u8) {
+    println!("--- Player turn ---");
+    handle_player_roll(player_roll);
+    println!("--- Enemy turn  ---");
+    handle_enemy_roll(enemy_roll);
+}
