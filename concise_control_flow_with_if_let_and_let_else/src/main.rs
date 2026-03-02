@@ -10,7 +10,11 @@ fn main() {
         Err(msg) => println!("{}", msg),
         Ok(conf) => println!("{} {}", conf.0, conf.1),
     }
-    // println!("{:?}", validate_config(config));
+    
+    process_command(Some("start"));
+    process_command(Some("pause"));
+    process_command(Some("stop"));
+    process_command(None);
 }
 // Ejercicio 1 - Configuracion del servidor
 // Estas creando un sistema de servidor
@@ -51,3 +55,27 @@ fn validate_config(config: ServerConfig) -> Result<(i32, i32), String> {
     Ok((max_connections, timeout_seconds))
 }
 
+// Ejercicio 2 - Parser simple de comando
+// Simula que recibes un comando opcional: Option<&str>
+// Puede venir:
+// Some("start")
+// Some("stop")
+// Some("pause")
+// None
+// Escribe la funcion proccess_command(cmd: Option<&str>)
+// - Si es None -> Imprimir "No command received"
+// - Si es Some("start") -> Imprimir "System starting"
+// - Si es Some("stop") -> Imprimir "System stopping"
+// - Para cualquier otro -> Iprimir "Unknown command"
+// Combinar if let
+fn process_command(cmd: Option<&str>) {
+    if let Some(c) = cmd {
+        match c {
+            "start" => println!("System starting"),
+            "stop" => println!("System stopping"),
+            _ => println!("Unknown command"),
+        }
+    } else {
+        println!("No command received");
+    }
+}
