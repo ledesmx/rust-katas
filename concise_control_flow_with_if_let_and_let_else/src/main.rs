@@ -15,6 +15,11 @@ fn main() {
     process_command(Some("pause"));
     process_command(Some("stop"));
     process_command(None);
+
+    let potion = Item::Potion(66);
+    let sword = Item::Sword;
+    println!("Potion: {:?}", consume_potion(potion));
+    use_item(sword);
 }
 // Ejercicio 1 - Configuracion del servidor
 // Estas creando un sistema de servidor
@@ -77,5 +82,34 @@ fn process_command(cmd: Option<&str>) {
         }
     } else {
         println!("No command received");
+    }
+}
+
+// Ejercicio 3 - Inventario con happy path
+// tienes un enum: Item: Potion(u32), Sword, Shield
+// Escribe la funcion consume_potion(itme: Item) -> Option<u32>
+// - Si es Potion(candidad) -> devolver la cantidad
+// - Si no es Potion -> Devolver None
+// Usa let else
+// Crea funcion use_item(item: Item)
+// - Si es Potion -> Imprimir "You healed X HP"
+// - Si no -> Imprimir "Item cannot be consumed"
+// Usa if let else
+enum Item {
+    Potion(u32),
+    Sword,
+    _Shield,
+}
+fn consume_potion(item: Item) -> Option<u32> {
+    let Item::Potion(hp) = item else {
+        return None;
+    };
+    Some(hp)
+}
+fn use_item(item: Item) {
+    if let Item::Potion(hp) = item {
+        println!("You healed {hp}");
+    } else {
+        println!("Item cannot be consumed");
     }
 }
