@@ -21,10 +21,14 @@
 // - Marcar el libro como no disponible
 // - Devolver el libro
 // Practicar organizacion modular real, que necesita pub y que no, usar use, evitar hacer todo pub
+use library::*;
 
 mod library;
 
 fn main() {
-    let book = library::catalog::Book::new("The Name of The Wind", "Patrick Rofus");
-    println!("Hello, world!");
+    let book = create_book("The Name of The Wind", "Patrick Rofus");
+    println!("Book created: {:?}", book);
+
+    let user = create_user("jon jon");
+    println!("User created: {} {}", user.0, user.1);
 }

@@ -2,6 +2,7 @@
 // - Debe contener pub struct Book: title:String, author: String, available: bool
 // - Metodo mark_unavailable(&mut self)
 // - Metodo mark_available(&mut self)
+#[derive(Debug)]
 pub struct Book {
     title: String,
     author: String,

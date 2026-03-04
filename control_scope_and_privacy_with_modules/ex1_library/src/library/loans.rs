@@ -9,9 +9,9 @@ enum LoanStatus {
 struct Loan {
     book: Book,
     user: User,
-    status: LounStatus,
+    status: LoanStatus,
 }
-imp Loan {
+impl Loan {
     fn return_book(&mut self) {
         
     } 
